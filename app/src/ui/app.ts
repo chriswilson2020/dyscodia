@@ -53,13 +53,23 @@ const COURSES = () => [
 const courseOf = (moduleId) => COURSES().find((c) => c.modules.some((m) => m.id === moduleId));
 
 /** A module is fully done when every Learn level AND every Test level is solved. */
-function moduleAllSolved(m) {
-  const learnOk = (m.learn || []).every((_, i) => results[m.id + ':learn'] && results[m.id + ':learn'][i] && results[m.id + ':learn'][i].solved);
-  const testOk = (m.test || []).every((_, i) => results[m.id + ':test'] && results[m.id + ':test'][i] && results[m.id + ':test'][i].solved);
-  return learnOk && testOk;
+/** Every Lesson Test in a module passed. (Learn levels are practice, not graded.) */
+function moduleTestsPassed(m) {
+  return (m.test || []).every((_, i) => results[m.id + ':test'] && results[m.id + ':test'][i] && results[m.id + ':test'][i].solved);
 }
-/** A course's belt is earned once every module in it is fully solved. */
-function courseEarned(course) { return course.modules.every(moduleAllSolved); }
+/** A course's belt is earned once every module's Lesson Test is passed. */
+function courseEarned(course) { return course.modules.every(moduleTestsPassed); }
+/** Progress toward a belt: how many of the course's test levels are passed. */
+function courseProgress(course) {
+  let passed = 0, total = 0;
+  course.modules.forEach((m) => {
+    (m.test || []).forEach((_, i) => {
+      total++;
+      if (results[m.id + ':test'] && results[m.id + ':test'][i] && results[m.id + ':test'][i].solved) passed++;
+    });
+  });
+  return { passed, total };
+}
 /** Belts that have a printable certificate (grid colour belts + black). */
 const CERT_BELTS = new Set(['l1', 'l2', 'l3', 'l4', 'l5', 'l6', 'black']);
 const isArray = () => !!(level && level.def && level.def.world === 'array');
@@ -160,13 +170,15 @@ function renderBeltRack() {
     const chip = document.createElement('div');
     chip.className = 'belt-chip' + (earned ? ' earned' : '');
     chip.style.setProperty('--belt', belt.hex);
-    chip.innerHTML = `<span class="bb">${belt.badge}</span><span class="nm">${belt.name}</span>`;
+    const prog = courseProgress(course);
+    const count = earned ? '' : ` · ${prog.passed}/${prog.total}`;
+    chip.innerHTML = `<span class="bb">${belt.badge}</span><span class="nm">${belt.name}${count}</span>`;
     if (earned) {
       chip.style.cursor = 'pointer';
       chip.title = 'View / print your ' + belt.name + ' certificate';
       (function (id) { chip.onclick = function () { openCourseCertificate(id); }; })(course.id);
     } else {
-      chip.title = 'Earn this by completing every level in ' + course.name;
+      chip.title = `${prog.passed}/${prog.total} Lesson Tests passed — pass them all to earn the ${belt.name}`;
     }
     rack.appendChild(chip);
   });
@@ -874,6 +886,13 @@ export function init() {
   $('certBtn').onclick = () => { openCertificate(beltScrimLesson); };
 
   loadProgress(); loadName(); loadDates();
+  // Stamp a date on any belt already earned in a previous session, so its
+  // certificate has the right date and the chip shows as earned on load.
+  COURSES().forEach((c) => {
+    if (COURSE_BELT[c.id] && courseEarned(c) && !beltDates[c.id]) {
+      beltDates[c.id] = new Date().toISOString().slice(0, 10); saveDates();
+    }
+  });
   renderBeltRack(); renderCourses(); renderTabs(); renderSectionToggle();
   loadLevel(0);
 }

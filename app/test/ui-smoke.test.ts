@@ -72,14 +72,14 @@ describe('UI boots and renders Lesson 1 at parity', () => {
     expect(document.querySelectorAll('#levels .lvl-btn').length).toBe(4);
   });
 
-  it('completing every Lesson One level awards the Yellow belt + certificate', async () => {
+  it('passing every Lesson One Test (Learn levels not required) awards the Yellow belt + certificate', async () => {
     const { LMETA } = await import('../src/content');
-    // Mark every Learn and Test level of all six Lesson One modules as solved.
+    // Pass every Lesson Test in all six Lesson One modules — and deliberately
+    // leave the Learn (practice) levels unsolved, to prove they don't gate the belt.
     const results: Record<string, Record<number, { solved: boolean; stars: number }>> = {};
     for (const m of LMETA) {
-      const learnKey = m.id + ':learn', testKey = m.id + ':test';
-      results[learnKey] = {}; results[testKey] = {};
-      (m.learn || []).forEach((_, i) => { results[learnKey][i] = { solved: true, stars: 3 }; });
+      const testKey = m.id + ':test';
+      results[testKey] = {};
       m.test.forEach((_, i) => { results[testKey][i] = { solved: true, stars: 3 }; });
     }
     localStorage.setItem('codeDojo.v1', JSON.stringify(results));

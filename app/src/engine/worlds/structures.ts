@@ -100,9 +100,14 @@ export function drawStructFrame(ctx: Ctx, w: StructWorld, f: StructFrame): void 
   caption(ctx, PAD, 20, 'IN');
   f.input.forEach((v, i) => token(ctx, PAD + 30 + i * (TOK + GAP), 4, v));
 
-  // structure (middle)
-  const isStack = w.struct === 'stack';
-  caption(ctx, PAD, 118, isStack ? 'STACK (last in, first out)' : 'QUEUE (first in, first out)');
+  // structure (middle). A "choice" challenge offers both removals, so render
+  // neutrally and don't name the structure — that's what the learner must decide.
+  const palette = w.def.palette || [];
+  const isChoice = palette.indexOf('pop') >= 0 && palette.indexOf('dequeue') >= 0;
+  const isStack = w.struct === 'stack' && !isChoice;
+  caption(ctx, PAD, 118, isChoice
+    ? 'HOLDING — Pop takes the back, Dequeue takes the front'
+    : (isStack ? 'STACK (last in, first out)' : 'QUEUE (first in, first out)'));
   if (isStack) {
     const baseY = 250;
     f.store.forEach((v, j) => token(ctx, PAD + 40, baseY - (j + 1) * (TOK + 4), v));

@@ -10,7 +10,7 @@
  * covered by the solvability gate. No programming-language syntax is ever
  * produced or shown — the blocks and the world are the whole medium.
  */
-import { LMETA, BLACK, ARRAY_LESSONS, STRUCT_LESSONS, GRAPH_LESSONS, metaOf } from '../content';
+import { LMETA, BLACK, ARRAY_LESSONS, STRUCT_LESSONS, GRAPH_LESSONS, CHALLENGE3_LESSONS, metaOf } from '../content';
 import { nid, countList } from '../program-model';
 import { parseLevel, drawFrame as gridDrawFrame, drawFloodUpto as gridFlood, floodMax as gridFloodMax, tileSize as gridTileSize, fitCanvas as gridFit } from '../engine/worlds/grid';
 import { parseArray, drawArrayFrame, fitArrayCanvas, arrayInitialFrame } from '../engine/worlds/array';
@@ -48,7 +48,7 @@ const ALL_LESSONS = () => BELTS_ACTIVE
 const COURSES = () => [
   { id: 'lesson1', name: 'Lesson One', modules: BELTS_ACTIVE ? [...LMETA, BLACK] : [...LMETA] },
   { id: 'lesson2', name: 'Lesson Two', modules: [...ARRAY_LESSONS] },
-  { id: 'lesson3', name: 'Lesson Three', modules: [...STRUCT_LESSONS, ...GRAPH_LESSONS] },
+  { id: 'lesson3', name: 'Lesson Three', modules: [...STRUCT_LESSONS, ...GRAPH_LESSONS, ...CHALLENGE3_LESSONS] },
 ];
 const courseOf = (moduleId) => COURSES().find((c) => c.modules.some((m) => m.id === moduleId));
 

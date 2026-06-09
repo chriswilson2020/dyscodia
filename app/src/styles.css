@@ -19,7 +19,7 @@ header.top p{margin:0;color:var(--ink-soft);font-size:15px;}
 .belt-chip{display:flex;align-items:center;gap:7px;font-family:"Lexend",sans-serif;font-weight:700;font-size:14px;
   border:2px solid var(--line);background:var(--paper-2);border-radius:999px;padding:5px 13px 5px 9px;}
 .belt-chip .bb{font-size:18px;filter:grayscale(1) opacity(.45)}
-.belt-chip.earned{border-color:var(--ink);background:#fff7e8;}
+.belt-chip.earned{border-color:var(--belt,var(--ink));background:#fff7e8;cursor:pointer;}
 .belt-chip.earned .bb{filter:none}
 .belt-chip.earned .nm{color:var(--ink)}
 .belt-chip .nm{color:var(--ink-soft)}

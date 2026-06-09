@@ -45,9 +45,9 @@ describe('UI boots and renders Lesson 1 at parity', () => {
     // First mission shown verbatim from content.
     expect(document.getElementById('missionTitle')!.textContent).toBe('First Steps');
     expect(document.getElementById('conceptTag')!.textContent).toContain('SEQUENCE');
-    // Belt rack is hidden while belts are deactivated.
-    expect(document.querySelectorAll('#beltRack .belt-chip').length).toBe(0);
-    expect((document.getElementById('beltRack') as HTMLElement).style.display).toBe('none');
+    // The belt collection shows one belt per Lesson, greyed until earned.
+    expect(document.querySelectorAll('#beltRack .belt-chip').length).toBe(3);
+    expect(document.querySelectorAll('#beltRack .belt-chip.earned').length).toBe(0);
     // The test section is labelled "Lesson Test", not "Belt Test".
     expect(document.getElementById('segTest')!.textContent).toContain('Lesson Test');
     // Editor is in block mode (not the interactive handler panel).
@@ -70,5 +70,31 @@ describe('UI boots and renders Lesson 1 at parity', () => {
     expect(document.querySelectorAll('#tabs .tab').length).toBe(6);
     // Bubble Sort Learn has four sub-levels.
     expect(document.querySelectorAll('#levels .lvl-btn').length).toBe(4);
+  });
+
+  it('completing every Lesson One level awards the Yellow belt + certificate', async () => {
+    const { LMETA } = await import('../src/content');
+    // Mark every Learn and Test level of all six Lesson One modules as solved.
+    const results: Record<string, Record<number, { solved: boolean; stars: number }>> = {};
+    for (const m of LMETA) {
+      const learnKey = m.id + ':learn', testKey = m.id + ':test';
+      results[learnKey] = {}; results[testKey] = {};
+      (m.learn || []).forEach((_, i) => { results[learnKey][i] = { solved: true, stars: 3 }; });
+      m.test.forEach((_, i) => { results[testKey][i] = { solved: true, stars: 3 }; });
+    }
+    localStorage.setItem('codeDojo.v1', JSON.stringify(results));
+
+    const { init } = await import('../src/ui/app');
+    init();
+
+    const chips = Array.from(document.querySelectorAll('#beltRack .belt-chip'));
+    const yellow = chips.find((c) => /Yellow Belt/.test(c.textContent || '')) as HTMLElement;
+    expect(yellow, 'Yellow belt chip exists').toBeTruthy();
+    expect(yellow.className, 'Yellow belt is earned').toContain('earned');
+
+    // Clicking the earned belt opens its certificate.
+    yellow.click();
+    expect(document.getElementById('certScrim')!.className).toContain('show');
+    expect(document.getElementById('certCard')!.innerHTML).toMatch(/Yellow Belt/);
   });
 });

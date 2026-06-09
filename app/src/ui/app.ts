@@ -146,15 +146,29 @@ function renderRace(mine) {
 }
 
 /* ===== top chrome ===== */
+/**
+ * The belt collection: one belt per Lesson (Yellow → Orange → Green …). Each
+ * chip is greyed until every level in that Lesson is cleared, then it lights up
+ * in colour and becomes clickable to view / print its certificate.
+ */
 function renderBeltRack() {
-  const rack = $('beltRack'); rack.innerHTML = '';
-  if (!BELTS_ACTIVE) { rack.style.display = 'none'; return; }
-  ALL_LESSONS().forEach((m) => {
-    const earned = beltEarned(m.id);
-    const c = document.createElement('div'); c.className = 'belt-chip' + (earned ? ' earned' : '');
-    c.innerHTML = `<span class="bb">${m.belt.badge}</span><span class="nm">${m.belt.name}</span>`;
-    if (earned && CERT_BELTS.has(m.id)) { c.style.cursor = 'pointer'; c.title = 'Get your certificate'; (function (id) { c.onclick = function () { openCertificate(id); }; })(m.id); }
-    rack.appendChild(c);
+  const rack = $('beltRack'); rack.innerHTML = ''; rack.style.display = '';
+  COURSES().forEach((course) => {
+    const belt = COURSE_BELT[course.id];
+    if (!belt) return;
+    const earned = courseEarned(course);
+    const chip = document.createElement('div');
+    chip.className = 'belt-chip' + (earned ? ' earned' : '');
+    chip.style.setProperty('--belt', belt.hex);
+    chip.innerHTML = `<span class="bb">${belt.badge}</span><span class="nm">${belt.name}</span>`;
+    if (earned) {
+      chip.style.cursor = 'pointer';
+      chip.title = 'View / print your ' + belt.name + ' certificate';
+      (function (id) { chip.onclick = function () { openCourseCertificate(id); }; })(course.id);
+    } else {
+      chip.title = 'Earn this by completing every level in ' + course.name;
+    }
+    rack.appendChild(chip);
   });
 }
 function renderCourses() {
@@ -485,7 +499,7 @@ function checkCourseBelt() {
   const course = COURSES().find((c) => c.id === curCourse);
   if (!course || !COURSE_BELT[course.id]) return;
   if (!courseEarned(course)) return;
-  renderCourses();
+  renderCourses(); renderBeltRack();
   if (beltDates[course.id]) return; // already awarded in a previous session
   showCourseBelt(course.id);
 }

@@ -51,7 +51,7 @@ function sealSVG(){
    +'<path id="sctop" d="M 46 90 A 42 42 0 0 1 130 90" fill="none"/>'
    +'<path id="scbot" d="M 50 94 A 38 38 0 0 0 126 94" fill="none"/>'
    +'<text font-family="Lexend,sans-serif" font-weight="700" font-size="9" fill="#5b4a12" letter-spacing="0.3"><textPath href="#sctop" startOffset="50%" text-anchor="middle">SEAL OF EXCELLENCE</textPath></text>'
-   +'<text font-family="Lexend,sans-serif" font-weight="700" font-size="9.5" fill="#5b4a12" letter-spacing="2.2"><textPath href="#scbot" startOffset="50%" text-anchor="middle">CODE DOJO</textPath></text>'
+   +'<text font-family="Lexend,sans-serif" font-weight="700" font-size="9.5" fill="#5b4a12" letter-spacing="2.2"><textPath href="#scbot" startOffset="50%" text-anchor="middle">DYSCODIA</textPath></text>'
    +'<g transform="translate(88,91)" fill="#7a5c0e"><path d="'+star+'"/></g>'
    +'</svg>';
 }
@@ -61,7 +61,7 @@ function buildCertificate(lessonId){
   var card=$('certCard'); card.style.setProperty('--belt',color);
   card.innerHTML='<div class="cert-frame">'
    +'<img class="cert-logo" src="'+LOGO+'" alt="Listerdale Life Sciences">'
-   +'<div class="cert-kicker">Code Dojo &middot; The Martial Art of Code</div>'
+   +'<div class="cert-kicker">Dyscodia &middot; The Martial Art of Code</div>'
    +'<h1 class="cert-title">Certificate of Achievement</h1>'
    +'<div class="cert-rule"></div>'
    +'<p class="cert-pre">This is proudly awarded to</p>'
@@ -73,7 +73,7 @@ function buildCertificate(lessonId){
    +'<div class="cert-seal">'+sealSVG()+'</div>'
    +'<div class="cert-sign"><div class="line"></div><div class="lab">Sensei</div><div class="val">Listerdale Dojo</div></div>'
    +'</div>'
-   +'<div class="cert-micro">CODE DOJO &mdash; a learning game by Listerdale Life Sciences</div>'
+   +'<div class="cert-micro">DYSCODIA &mdash; a learning game by Listerdale Life Sciences BV</div>'
    +'</div>';
 }
 function openCertificate(lessonId){
@@ -97,7 +97,7 @@ function buildCourseCertificate(courseId){
   var card=$('certCard'); card.style.setProperty('--belt',c.hex);
   card.innerHTML='<div class="cert-frame">'
    +'<img class="cert-logo" src="'+LOGO+'" alt="Listerdale Life Sciences">'
-   +'<div class="cert-kicker">Code Dojo &middot; The Martial Art of Code</div>'
+   +'<div class="cert-kicker">Dyscodia &middot; The Martial Art of Code</div>'
    +'<h1 class="cert-title">Certificate of Achievement</h1>'
    +'<div class="cert-rule"></div>'
    +'<p class="cert-pre">This is proudly awarded to</p>'
@@ -109,7 +109,7 @@ function buildCourseCertificate(courseId){
    +'<div class="cert-seal">'+sealSVG()+'</div>'
    +'<div class="cert-sign"><div class="line"></div><div class="lab">Sensei</div><div class="val">Listerdale Dojo</div></div>'
    +'</div>'
-   +'<div class="cert-micro">CODE DOJO &mdash; a learning game by Listerdale Life Sciences</div>'
+   +'<div class="cert-micro">DYSCODIA &mdash; a learning game by Listerdale Life Sciences BV</div>'
    +'</div>';
 }
 function openCourseCertificate(courseId){

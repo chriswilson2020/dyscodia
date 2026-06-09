@@ -1,9 +1,9 @@
 {
-  "name": "code-dojo",
+  "name": "dyscodia",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Code Dojo — visual, syntax-free programming concepts taught through blocks and worlds.",
+  "description": "Dyscodia — visual, syntax-free programming concepts taught through blocks and worlds. By Listerdale Life Sciences BV.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

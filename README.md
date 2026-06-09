@@ -1,15 +1,15 @@
-# Dyscodia — Code Dojo
+# Dyscodia
 
 **Learn programming and algorithms entirely visually — no syntax, ever.**
 
-Code Dojo teaches the *ideas* behind code — sequence, loops, conditionals, variables,
+Dyscodia teaches the *ideas* behind code — sequence, loops, conditionals, variables,
 events, memory, search, sorting, data structures and graph traversal — through tappable
 blocks and animated worlds. There is no code view, no language targets, and no typing.
 The blocks and the worlds are the whole medium. It's designed accessibility-first
 (dyslexia in particular): friendly typefaces, a low-glare palette, big tap targets,
 optional read-aloud, and minimal text.
 
-**▶ Live site:** https://chriswilson2020.github.io/dyscodia/
+**▶ Live site:** https://dyscodia.com
 
 ---
 
@@ -102,4 +102,4 @@ greyed-out "add lN.mp3" state. Audio is learner-triggered only. Scripts are in
 
 ---
 
-A learning game by **Listerdale Life Sciences**.
+A learning game by **Listerdale Life Sciences BV**. Live at **dyscodia.com**.

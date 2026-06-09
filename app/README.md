@@ -1,4 +1,4 @@
-# Code Dojo — platform build (P0)
+# Dyscodia — platform build
 
 The prototype (`../prototype/code-dojo.html`) refactored into a typed, modular,
 static client-only app. **No behaviour changes** — this is parity with the

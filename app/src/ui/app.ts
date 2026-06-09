@@ -734,7 +734,7 @@ function loadLevel(i) {
   else { setupAudioFor(curLesson); refreshAudioBar(); }
   $('hud').style.display = def.energy != null ? '' : 'none';
   const hb = $('hintBtn'), ht = $('hintText');
-  if (isTest()) { hb.style.display = ''; ht.className = 'hint-text'; ht.textContent = ''; rec(setId(), i); hb.disabled = false; hb.textContent = '💡 Hint'; }
+  if (def.hint) { hb.style.display = ''; ht.className = 'hint-text'; ht.textContent = ''; rec(setId(), i); hb.disabled = false; hb.textContent = '💡 Hint'; }
   else { hb.style.display = 'none'; ht.className = 'hint-text'; }
   if (def.interactive) {
     $('progEditor').style.display = 'none'; $('handlersWrap').style.display = '';
@@ -758,7 +758,8 @@ function loadLevel(i) {
   if (isStruct()) { $('steps').style.display = ''; $('steps').textContent = '🪙 moves: 0'; }
   if (isGraph()) { $('steps').style.display = ''; $('steps').textContent = '👣 visited: 0/' + level.n; }
   if (isArray() && def.maxOps) { $('par').textContent = 'Budget: ≤ ' + def.maxOps + ' moves'; }
-  $('demoBtn').style.display = (!isBlack() && !isTest() && !def.sandbox) ? '' : 'none';
+  const hasDemo = !!(def.demo || def.demoChain || def.demoHandlers || def.shortest);
+  $('demoBtn').style.display = (hasDemo && !isBlack() && !isTest() && !def.sandbox) ? '' : 'none';
   renderExamStrip(); fitCanvas();
   frames = [initialFrame()]; drawFrame(frames[0]);
   $('result').innerHTML = '';
@@ -847,9 +848,9 @@ export function init() {
   $('scrim').onclick = (e) => { if (e.target === $('scrim')) closePalette(); };
   $('readBtn').onclick = () => { if (locked) { speak('Black belt locked. Earn the other belts first.'); return; } speak(level.def.title + '. ' + level.def.text + (!isTest() ? (' ' + level.def.concept) : '')); };
   $('hintBtn').onclick = () => {
-    if (!isTest()) return;
-    const r = rec(setId(), curIdx); r.hintUsed = true;
-    $('hintText').textContent = '💡 ' + level.def.hint + '  (using a hint caps this test at ★★)';
+    if (!level.def.hint) return;
+    if (isTest()) rec(setId(), curIdx).hintUsed = true;
+    $('hintText').textContent = '💡 ' + level.def.hint + (isTest() ? '  (using a hint caps this test at ★★)' : '');
     $('hintText').className = 'hint-text show'; $('hintBtn').disabled = true; speak(level.def.hint);
   };
   $('retakeBtn').onclick = () => {

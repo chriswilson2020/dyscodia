@@ -127,11 +127,11 @@ export function drawGraphFrame(ctx: Ctx, w: GraphWorld, f: GraphFrame): void {
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(taken ? String(orderIdx(i) + 1) : String.fromCharCode(65 + i), x, y + 1);
   }
-  // goal + frontier readout (the learner chooses which end to Take from)
+  // Frontier readout, with the end each Take block removes from made explicit.
+  // (No goal label — that would give away the answer in the Mystery challenge.)
   ctx.fillStyle = '#5b566b';
   ctx.font = '700 12px Lexend, system-ui, sans-serif';
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
   const names = f.frontier.map((i) => String.fromCharCode(65 + i)).join(' ');
-  const goal = w.struct === 'queue' ? 'goal: breadth-first' : 'goal: depth-first';
-  ctx.fillText(goal + '   frontier (front→back): ' + (names || '—'), 10, BOARD_H - 12);
+  ctx.fillText('Take Front ◂  ' + (names || '—') + '  ▸ Take Top', 10, BOARD_H - 12);
 }

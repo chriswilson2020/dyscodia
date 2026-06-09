@@ -1,0 +1,29 @@
+name: CI
+
+# Runs the real interpreter over every level on every push / PR. The build
+# fails if any level is unsolvable, any "Show me" demo doesn't solve, or any
+# shortest-path target disagrees with an independent BFS. Content can't ship broken.
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - name: Type-check
+        run: npx tsc --noEmit
+      - name: Solvability gate + UI smoke tests
+        run: npm test
+      - name: Build (single-file static app)
+        run: npx vite build

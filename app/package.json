@@ -1,0 +1,22 @@
+{
+  "name": "code-dojo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Code Dojo — visual, syntax-free programming concepts taught through blocks and worlds.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.42",
+    "jsdom": "^24.1.3",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-singlefile": "^2.0.1",
+    "vitest": "^1.6.0"
+  }
+}

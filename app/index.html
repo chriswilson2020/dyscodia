@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Code Dojo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="logo">🦊</span>
+    <div><h1>Code Dojo</h1><p>Learn a skill, pass the belt test, climb the ranks.</p></div>
+  </header>
+
+  <div class="belt-rack" id="beltRack"></div>
+  <div class="courses" id="courses"></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="seg" id="sectionToggle">
+    <button id="segLearn" class="on">📖 Learn</button>
+    <button id="segTest">🎓 Lesson Test</button>
+  </div>
+  <div class="levels" id="levels"></div>
+
+  <div class="grid2">
+    <section class="card">
+      <div class="mission-head">
+        <h2 id="missionTitle">Mission</h2>
+        <div class="head-btns">
+          <button class="hint-btn" id="hintBtn" style="display:none">💡 Hint</button>
+          <button class="read-btn" id="readBtn">🔊 Read it</button>
+        </div>
+      </div>
+      <p class="mission-text" id="missionText"></p>
+      <span class="concept" id="conceptTag"></span>
+      <div id="audioBar" class="audio-bar" style="display:none">
+        <button id="audioPlay" class="audio-play" aria-label="Play lesson audio">▶</button>
+        <span class="audio-label" id="audioLabel">🎧 Lesson</span>
+        <div id="audioTrack" class="audio-track"><div id="audioFill" class="audio-fill"></div></div>
+        <span id="audioTime" class="audio-time">0:00</span>
+      </div>
+      <div id="lessonDiagram" style="display:none;margin:10px 0 2px"></div>
+      <p class="hint-text" id="hintText"></p>
+      <div class="hud" id="hud" style="display:none">🔋 Energy 0</div>
+      <div class="hud steps" id="steps" style="display:none">👣 0</div>
+      <div class="exam-strip" id="examStrip"></div>
+      <div class="stage-wrap"><canvas id="stage" width="400" height="400"></canvas></div>
+      <div class="controls">
+        <button class="btn run" id="runBtn">▶ Run</button>
+        <button class="btn reset" id="resetBtn">↺ Reset</button>
+        <button class="btn clear" id="clearBtn">🗑 Clear code</button>
+        <button class="btn flood" id="floodBtn" style="display:none">🌊 Show the flood</button>
+        <button class="btn demo" id="demoBtn" style="display:none">👀 Show me</button>
+      </div>
+      <div class="dpad" id="dpad" style="display:none">
+        <button data-ev="up">▲</button>
+        <div class="dpad-mid">
+          <button data-ev="left">◀</button>
+          <button data-ev="charge">⚡</button>
+          <button data-ev="right">▶</button>
+        </div>
+        <button data-ev="down">▼</button>
+      </div>
+      <div class="result" id="result"></div>
+      <div class="race-panel" id="racePanel" style="display:none"></div>
+      <p class="hint" id="sandboxHint" style="display:none">Sandbox: tap a tile to add or remove a wall, then code your fox to the gate.</p>
+    </section>
+
+    <section class="card">
+      <div class="panel-head"><h2 id="codeHead">Your code</h2><span class="par" id="par"></span></div>
+      <div id="progEditor">
+        <div class="prog-zone">
+          <p class="zone-label">Steps — run top to bottom</p>
+          <div id="programList"></div>
+          <button class="add-btn" id="addMain">➕ Add a step</button>
+        </div>
+        <div class="combo-card" id="comboCard" style="display:none">
+          <h3>⭐ Combo — your reusable move</h3>
+          <div id="comboList"></div>
+          <button class="add-btn add-mini" id="addCombo" style="border-color:var(--combo);color:var(--combo-d)">➕ Add to combo</button>
+        </div>
+      </div>
+      <div id="handlersWrap" style="display:none"></div>
+    </section>
+  </div>
+  <footer>Made for you to mess about with. Break it, fix it, win it. — Code Dojo
+    <br><button id="resetAllBtn" class="link-btn">↺ Reset all progress</button></footer>
+</div>
+
+<div class="scrim" id="scrim">
+  <div class="palette"><h3>Pick a step</h3><div class="pal-grid" id="palGrid"></div>
+    <button class="pal-cancel" id="palCancel">Cancel</button></div>
+</div>
+<div class="scrim" id="beltScrim">
+  <div class="belt-card">
+    <div class="belt-badge" id="beltBadge">🥋</div>
+    <p class="belt-name" id="beltName"></p><p class="belt-sub" id="beltSub"></p>
+    <div class="belt-rows" id="beltRows"></div>
+    <p class="unlock" id="beltUnlock" style="display:none"></p>
+    <div class="belt-actions">
+      <button class="btn reset" id="retakeBtn">↺ Retake</button>
+      <button class="btn belt" id="certBtn" style="display:none">🏅 Certificate</button>
+      <button class="btn belt" id="continueBtn">Continue ▶</button>
+    </div>
+  </div>
+</div>
+
+<div id="certScrim">
+  <div class="cert-controls">
+    <label>Name on certificate <input id="certNameInput" placeholder="Your name" maxlength="32" autocomplete="off"></label>
+    <button class="btn belt" id="certPrintBtn">🖨 Print / Save PDF</button>
+    <button class="btn reset" id="certCloseBtn">Close</button>
+  </div>
+  <div class="cert-card" id="certCard"></div>
+</div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

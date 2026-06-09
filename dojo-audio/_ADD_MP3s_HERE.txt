@@ -1,0 +1,14 @@
+Put your lesson voiceover files here, named exactly:
+
+  l1.mp3   (Yellow  - Moves)
+  l2.mp3   (Orange  - Energy)
+  l3.mp3   (Green   - Decisions)
+  l4.mp3   (Blue    - Controls)
+  l5.mp3   (Purple  - Memory)
+  l6.mp3   (Brown   - Best Way)
+
+Scripts to record from: ../docs/code-dojo-audio-scripts.md
+
+Until a file is here, that lesson's audio bar shows greyed-out ("add lN.mp3").
+Audio plays from a real URL (GitHub Pages) or a local web server - not from a
+file opened directly off disk. You can delete this .txt file once you're done.

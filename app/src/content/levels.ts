@@ -276,12 +276,12 @@ export const BLACK_TEST: LevelDef[] = [
 ];
 
 export const LMETA: LessonMeta[] = [
-  { id: 'l1', tab: '📚 Lesson 1: Moves', belt: { name: 'Yellow Belt', badge: '🟨' }, learn: L1_LEARN, test: L1_TEST },
-  { id: 'l2', tab: '📗 Lesson 2: Energy', belt: { name: 'Orange Belt', badge: '🟧' }, learn: L2_LEARN, test: L2_TEST },
-  { id: 'l3', tab: '📙 Lesson 3: Decisions', belt: { name: 'Green Belt', badge: '🟩' }, learn: L3_LEARN, test: L3_TEST },
-  { id: 'l4', tab: '📕 Lesson 4: Controls', belt: { name: 'Blue Belt', badge: '🟦' }, learn: L4_LEARN, test: L4_TEST },
-  { id: 'l5', tab: '📓 Lesson 5: Memory', belt: { name: 'Purple Belt', badge: '🟣' }, learn: L5_LEARN, test: L5_TEST },
-  { id: 'l6', tab: '📔 Lesson 6: Best Way', belt: { name: 'Brown Belt', badge: '🟤' }, learn: L6_LEARN, test: L6_TEST },
+  { id: 'l1', tab: '📚 Lesson 1: Moves', belt: { name: 'Yellow Belt', badge: '🟨' }, audio: 'moves', learn: L1_LEARN, test: L1_TEST },
+  { id: 'l2', tab: '📗 Lesson 2: Energy', belt: { name: 'Orange Belt', badge: '🟧' }, audio: 'energy', learn: L2_LEARN, test: L2_TEST },
+  { id: 'l3', tab: '📙 Lesson 3: Decisions', belt: { name: 'Green Belt', badge: '🟩' }, audio: 'decisions', learn: L3_LEARN, test: L3_TEST },
+  { id: 'l4', tab: '📕 Lesson 4: Controls', belt: { name: 'Blue Belt', badge: '🟦' }, audio: 'controls', learn: L4_LEARN, test: L4_TEST },
+  { id: 'l5', tab: '📓 Lesson 5: Memory', belt: { name: 'Purple Belt', badge: '🟣' }, audio: 'memory', learn: L5_LEARN, test: L5_TEST },
+  { id: 'l6', tab: '📔 Lesson 6: Best Way', belt: { name: 'Brown Belt', badge: '🟤' }, audio: 'best-way', learn: L6_LEARN, test: L6_TEST },
 ];
 
 export const BLACK: LessonMeta = { id: 'black', tab: '🥋 Black Belt', belt: { name: 'Black Belt', badge: '🥋' }, test: BLACK_TEST };

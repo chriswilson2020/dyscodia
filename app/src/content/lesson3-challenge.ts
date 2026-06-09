@@ -59,5 +59,5 @@ export const L17_TEST: LevelDef[] = [
 ];
 
 export const CHALLENGE3_LESSONS: LessonMeta[] = [
-  { id: 'l17', tab: '🧩 Challenge', belt: { name: 'Puzzler Belt', badge: '🧩' }, learn: L17_LEARN, test: L17_TEST },
+  { id: 'l17', tab: '🧩 Challenge', belt: { name: 'Puzzler Belt', badge: '🧩' }, audio: 'challenge-graphs', learn: L17_LEARN, test: L17_TEST },
 ];

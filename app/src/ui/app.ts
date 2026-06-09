@@ -697,15 +697,18 @@ function refreshAudioBar() {
   if (!show) return;
   $('audioPlay').disabled = !audioReady;
   $('audioBar').classList.toggle('audio-off', !audioReady);
-  $('audioLabel').textContent = audioReady ? '🎧 Lesson' : '🎧 add ' + curLesson + '.mp3';
+  $('audioLabel').textContent = audioReady ? '🎧 Lesson' : '🎧 add ' + audioName(curLesson) + '.mp3';
 }
+/** The audio filename for a module — a readable slug, falling back to the id. */
+function audioName(lessonId) { const m = metaOf(lessonId); return (m && m.audio) || lessonId; }
 function setupAudioFor(lessonId) {
-  if (lessonAudio.getAttribute('data-lesson') === lessonId) return;
+  const name = audioName(lessonId);
+  if (lessonAudio.getAttribute('data-lesson') === name) return;
   try { lessonAudio.pause(); } catch (e) {}
   audioReady = false;
   $('audioPlay').textContent = '▶'; $('audioFill').style.width = '0%'; $('audioTime').textContent = '0:00';
-  lessonAudio.setAttribute('data-lesson', lessonId);
-  lessonAudio.src = 'dojo-audio/' + lessonId + '.mp3';
+  lessonAudio.setAttribute('data-lesson', name);
+  lessonAudio.src = 'dojo-audio/' + name + '.mp3';
   lessonAudio.load();
 }
 

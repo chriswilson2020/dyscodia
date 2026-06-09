@@ -83,6 +83,6 @@ export const L15_TEST: LevelDef[] = [
 ];
 
 export const GRAPH_LESSONS: LessonMeta[] = [
-  { id: 'l14', tab: '🌊 Breadth-First', belt: { name: 'Flooder Belt', badge: '🌊' }, learn: L14_LEARN, test: L14_TEST },
-  { id: 'l15', tab: '🤿 Depth-First', belt: { name: 'Diver Belt', badge: '🤿' }, learn: L15_LEARN, test: L15_TEST },
+  { id: 'l14', tab: '🌊 Breadth-First', belt: { name: 'Flooder Belt', badge: '🌊' }, audio: 'breadth-first', learn: L14_LEARN, test: L14_TEST },
+  { id: 'l15', tab: '🤿 Depth-First', belt: { name: 'Diver Belt', badge: '🤿' }, audio: 'depth-first', learn: L15_LEARN, test: L15_TEST },
 ];

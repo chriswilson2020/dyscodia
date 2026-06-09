@@ -67,6 +67,6 @@ export const L13_TEST: LevelDef[] = [
 ];
 
 export const STRUCT_LESSONS: LessonMeta[] = [
-  { id: 'l12', tab: '🥞 Stack', belt: { name: 'Stacker Belt', badge: '🥞' }, learn: L12_LEARN, test: L12_TEST },
-  { id: 'l13', tab: '🚚 Queue', belt: { name: 'Queuer Belt', badge: '🚚' }, learn: L13_LEARN, test: L13_TEST },
+  { id: 'l12', tab: '🥞 Stack', belt: { name: 'Stacker Belt', badge: '🥞' }, audio: 'stack', learn: L12_LEARN, test: L12_TEST },
+  { id: 'l13', tab: '🚚 Queue', belt: { name: 'Queuer Belt', badge: '🚚' }, audio: 'queue', learn: L13_LEARN, test: L13_TEST },
 ];

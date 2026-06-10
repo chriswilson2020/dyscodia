@@ -5,14 +5,14 @@
 set -e
 cd "$(dirname "$0")"
 
-if [ -z "$(git status --porcelain)" ]; then
-  echo "Nothing to commit — working tree clean."
-  exit 0
+# Commit local changes if there are any; otherwise just push pending commits.
+if [ -n "$(git status --porcelain)" ]; then
+  git add -A
+  git commit -m "${1:-Update Dyscodia}"
+else
+  echo "Working tree clean — pushing any commits not yet on the remote."
 fi
 
-git add -A
-git commit -m "${1:-Update Code Dojo}"
 git push origin main
 echo
-echo "Pushed. GitHub Actions will run the tests and redeploy:"
-echo "  https://chriswilson2020.github.io/dyscodia/"
+echo "Pushed. GitHub Actions runs the tests and redeploys:  https://dyscodia.com"

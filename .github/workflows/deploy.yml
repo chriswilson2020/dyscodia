@@ -35,6 +35,8 @@ jobs:
         run: npm test
       - name: Build single-file site (type-check + bundle)
         run: npm run build
+      - name: Include lesson audio in the published site
+        run: 'if [ -d ../dojo-audio ]; then cp -r ../dojo-audio dist/dojo-audio; fi'
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

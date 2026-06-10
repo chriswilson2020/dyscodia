@@ -1,11 +1,12 @@
 # Dyscodia — Lesson Audio Scripts (Lessons Two & Three)
 
-Same warm, consistent voice as Lessons One. Read slightly slow, with clear pauses at the
-full stops. Export each as a plain MP3 and drop it in the **`dojo-audio/`** folder beside the
-app. The player loads it automatically on the Learn side of each module.
+These are stories, not instructions. The screen shows the *how*; the voice gives the *why* and
+the wonder. Read like a favourite teacher reading aloud — unhurried, warm, leaving little
+silences after the big ideas so they have room to land. Short sentences on purpose: easy to
+follow, easy to picture. Never rush the last line of a script — that's the one that sticks.
 
-**Filenames are codified by position:** `l<lesson>m<module>` — so Lesson Two, third module
-(Insertion Sort) is `l2m3.mp3`. Sequential and self-documenting:
+**Filenames are codified by position:** `l<lesson>m<module>` — Lesson Two, module three
+(Insertion Sort) is `l2m3.mp3`.
 
 | Lesson | Module | File |
 |--------|--------|------|
@@ -26,86 +27,181 @@ app. The player loads it automatically on the Learn side of each module.
 # Lesson Two — Sorting, Searching & Strategy
 
 ## Bubble Sort  ·  `l2m1.mp3`
-*Concept: comparing and swapping adjacent items*
+*Hook: order appearing from one tiny rule*
 
-Welcome to a brand-new world. Instead of a fox on tiles, you have a row of bars of different heights, and a little lens that sits over two of them at a time. Your job is to put the bars in order, shortest to tallest. Here is the very first idea of sorting: look at the two bars under the lens, and if the left one is taller than the right, swap them. Just that — compare, and swap when they are the wrong way round. Now do it again and again, sliding the lens along the row: if taller, swap; step to the next pair; and when you reach the end, rewind to the start and sweep again. Watch the tallest bar bubble all the way to the right on the first pass, then the next tallest, and the next. That is bubble sort — one of the first sorting methods anyone learns. It is not the fastest, but it is beautifully simple: keep sweeping and swapping out-of-order neighbours, and the whole row falls into order. Repeat until sorted, and let it run.
+Look at this row of bars. All jumbled up. We want to line them up, shortest to tallest.
+
+Now, you could try to plan the whole thing in your head at once. But here is something lovely: you don't have to. You only ever look at two bars side by side. If the left one is taller, you swap them. That's the whole rule. One tiny, almost silly rule.
+
+So how does the *whole* row end up sorted? Watch what happens. With every sweep, the tallest bar drifts along to the end, like a bubble rising up through water. Then the next tallest. Then the next.
+
+Nobody is in charge of the big picture. The bars don't even know they're being sorted — they just keep swapping. And somehow, that's enough.
+
+That's the first secret of computing, and it's a strange and beautiful one: a big, messy problem can melt away under one small rule, done again, and again, and again.
 
 ---
 
 ## Selection Sort  ·  `l2m2.mp3`
-*Concept: remember the smallest, then place it*
+*Hook: patience — find the best, then commit*
 
-Same row of bars, but a completely different way of thinking. This time, before you move anything, you go looking. Scan along the whole row and remember the shortest bar you have seen — that little marker keeps track of it. When you reach the end, you know exactly which bar is smallest, so you place it at the front, where it belongs. Then you do it again with what is left, and again, and the sorted part grows from the left, one bar at a time. That is selection sort. The clever thing about it is restraint: it does a lot of looking, but it only ever makes one move per pass — it picks the right bar once and puts it straight into place. Where bubble sort fidgets, swapping over and over, selection sort scans patiently and places with confidence. Remember the smallest, place it, repeat — and watch the green sorted region grow.
+Here's a completely different way of thinking. Not a fidget this time. A hunter.
+
+Picture a punnet of strawberries. You don't grab the first one you touch. Your eyes run along the whole lot, looking for the ripest — and *only then* do you pick it. Then you do it again with the ones that are left.
+
+Selection sort thinks exactly like that. It looks all the way along the row, holding just one thing in its memory: the smallest bar it has seen so far. It doesn't move anything yet. It just... remembers. And when it reaches the end, it *knows*, for certain, which bar is smallest. So it places that one, gently, right where it belongs.
+
+Bubble sort was busy — swapping, swapping, swapping. This one is calm. It looks a great deal, and it moves almost not at all.
+
+Two ways to reach the very same tidy row. One restless, one patient. You're already learning something deep here: a problem never has just one solution. Solutions have personalities.
 
 ---
 
 ## Insertion Sort  ·  `l2m3.mp3`
-*Concept: slide each item back into place*
+*Hook: you already know how to do this*
 
-Here is a third way to sort the same row, and it is the one you probably use without thinking — it is how most people sort a hand of cards. Take each bar in turn, and slide it back to the left, past any bar that is taller than it, until it slots into the right place. That is the whole idea: whenever a bar is shorter than the one on its left, swap them and step back; keep shuffling it left until it fits, then move on to the next. This is insertion sort. Its special talent is this: when the row is already almost in order, it barely has to move anything at all — each bar is nearly home already — so on tidy data it is wonderfully quick. Slide each bar back until it fits, and build the sorted row one slotted-in card at a time. Remember this one — it matters later, when you have to choose the right tool for the job.
+You have done this before. I promise you have. Have you ever picked up a hand of cards and put them in order?
+
+You take each new card and slide it leftwards, past the bigger ones, until it drops into just the right gap. You don't think about it. Your hands simply know.
+
+Well — that is insertion sort. That ordinary thing you do at the kitchen table is a real algorithm, one that computers lean on every day. You have been doing computer science your whole life, and nobody ever told you.
+
+And here's its quiet cleverness. When the cards are already nearly in order, it barely lifts a finger — each one is almost home. Give it tidy data, and it flies.
+
+Hold on to that feeling. Because very soon, you'll have to *choose* which method to trust — and knowing that some are lazy in exactly the right way... that's the kind of thing that wins.
 
 ---
 
 ## Search  ·  `l2m4.mp3`
-*Concept: linear search and binary search*
+*Hook: the leap from plodding to clever*
 
-Sorting was about putting things in order. Searching is about finding one thing among many. Start with the simplest way — linear search. Walk along the row, one bar at a time, checking each: is this the one? — until you land on your target and pick it up. It always works, but on a long row it can take a great many checks. Now here is the magic, and it only works on a row that is already sorted: binary search. Instead of starting at the end, jump straight to the middle, and ask one question — is my target higher or lower than this? If it is higher, the whole left half cannot contain it, so throw it away. If it is lower, throw away the right. Then jump to the middle of what is left, and halve it again. Each guess wipes out half the row. Watch the checks counter: where linear search creeps up bar by bar, binary search finds the answer in just a handful of jumps. That is why sorted data is so valuable — it lets you search by halving.
+Now forget sorting for a moment. Here's a brand-new question, and it's one you face every single day: how do you find one thing, hidden among many?
+
+The plain way is to check everything, one by one, until you spot it. It always works. But imagine a thick phone book, and finding a name by reading every line from the very top. You'd be there till bedtime.
+
+So here is the trick that changes everything — and it only works when things are in order. Don't start at the edge. Jump to the *middle*. And ask one question: is the one I want higher, or lower? Whatever the answer — half the row just vanishes. It can't be hiding there, so you throw it away. Then you do it again. Halve it. Halve it. Halve it.
+
+It's the guess-the-number game. I'm thinking of a number between one and a *million*... and you can find it in about twenty guesses. Twenty.
+
+That isn't searching faster. That's searching *cleverer*. And once you've felt that, you will never look at a sorted list the same way again.
 
 ---
 
 ## The Race  ·  `l2m5.mp3`
-*Concept: complexity — comparing algorithms*
+*Hook: they all work — so does it matter?*
 
-You now know several ways to do the same job, and they all work — but working is not the whole story. This lesson asks a sharper question: which one is better, and how would you even know? The answer is to count the work. Solve a puzzle, and the dojo shows how many steps your method took, against a rival's. Then it grows the problem bigger and bigger, and you watch the gap open up. A linear search of a long row takes one check per item; a binary search takes a handful, no matter how long the row gets. That is the difference between getting slower in step with the data, and barely getting slower at all. Programmers have a name for this — complexity — and it is the reason the right algorithm can finish in a blink while the wrong one grinds for an age. And the best part: line the algorithms up and race them side by side, running together, and simply watch which one crosses the line first. Seeing it beats being told it.
+Every method you've learned reaches the right answer. So who cares which one you pick? Why not just grab any of them?
+
+Here's who cares. Imagine ten things to sort. They'd all finish in a blink — no difference worth a thought. But the real world doesn't have ten things. It has millions. And at a million, the gap between a clever method and a clumsy one isn't a few seconds. It's the difference between *done before you blink*, and *still running this time tomorrow*.
+
+So let's stop arguing about it and race them. Same data, side by side, step for step. Watch one sail across the line while the other is barely warming up. Then make the problem bigger — and watch that gap yawn wide open.
+
+There's a name for this. Complexity. It's the reason your phone answers in an instant instead of grinding away for an hour. The right idea doesn't just win — it wins by *more and more*, the harder the problem gets.
+
+That might be the most powerful thing in all of computing. And you don't have to take my word for it. You get to watch it happen.
 
 ---
 
 ## Challenge  ·  `l2m6.mp3`
-*Concept: choosing the right sort for the data*
+*Hook: now you're the one who decides*
 
-No demonstrations this time. This is where you find out whether you really understand what you have learned. You will be given a row to sort, all the sorting blocks you know, and a tight budget — a limit on how many moves you are allowed. The catch is that there is no single right answer: the best sort depends on the row in front of you. When the bars are almost in order, an adaptive sort like insertion barely has to move, and sails under the budget — while selection, doing its full scan every pass, runs over. But hand you a row that is completely backwards, and it flips: the adaptive sorts now do their very worst work, while steady selection comes in under the limit. So look hard at the data before you choose. Read its shape, remember how each sort behaves, and pick the one that fits. This is the real skill — not knowing the algorithms, but knowing when to use which. Take your time, and think before you build.
+No demonstrations now. No one telling you what to do. This part is just you.
+
+I'm going to hand you a row, every tool you've learned, and one hard limit — only so many moves allowed. And here's the twist that makes it real: there is no single right answer. There can't be. It depends entirely on the row in front of you.
+
+When the bars are nearly sorted, the gentle, lazy methods barely stir, and they breeze under the limit — while the patient hunter wastes its time scanning everything. But turn that row completely backwards, and it all flips over: now the lazy ones thrash about and overspend, and steady, unbothered selection strolls home well within the limit.
+
+So look. *Really* look at what you've been given. Feel its shape.
+
+This is the leap — from following instructions, to thinking like an engineer. Not knowing how the tools work, but knowing, at a glance, which one this moment is *asking* for. That judgement is the whole game. Take your time. Trust your eye.
 
 ---
 
 # Lesson Three — Structures & Graphs
 
 ## Stack  ·  `l3m1.mp3`
-*Concept: last in, first out — a stack reverses*
+*Hook: the everyday magic of Undo*
 
-A new world again — this time about how you hold your data while you work. Picture a stack of plates. You add a plate to the top, and when you need one, you take it off the top. The last plate you put on is the first one you take off. That is a stack, and it has a useful magic: it reverses things. Watch. Feed a row of tokens in, pushing each one onto the stack. Now pop them off, one by one. Because the last in comes off first, they come out in the opposite order to how they went in — reversed, for free. Push them all on; pop them all off; the row is flipped. Programmers call this last in, first out, and it is everywhere — the Undo button in every app you use is a stack of your actions, handing back the most recent one first. A simple idea, with surprising power.
+Picture a tall stack of plates. You add to the top. You take from the top. So the plate you put down *last* is the very first one you'll pick up again.
+
+Simple, isn't it? But hidden inside that is a kind of magic. Feed things in, one after another — then take them all back out — and they come out *backwards*. The order flips, all by itself, for free.
+
+And you already trust your whole life to this. Every time you press Undo — in a drawing, in a sentence you're writing — the computer reaches into a stack and hands you back the very last thing you did. Press it again, and there's the one before that. Last in, first out.
+
+Such a small idea. A pile of plates. And yet it's quietly holding up half the software you have ever touched.
+
+The best ideas in computing are often like this — almost too simple to seem important. And almost always, they turn out to be the important ones.
 
 ---
 
 ## Queue  ·  `l3m2.mp3`
-*Concept: first in, first out — a queue preserves order*
+*Hook: the stack's opposite — and you've stood in it*
 
-Now meet the stack's opposite. Picture a queue at a shop, or a conveyor belt. You join at the back, and you are served from the front — so the first to arrive is the first to leave. That is a queue: first in, first out. Use the very same shape of program as before, but with a queue instead of a stack, and something different happens. Feed the tokens in, adding each to the back. Take them out from the front, one by one. Because the first in comes out first, the order is kept exactly as it was — no reversing this time. Where a stack flips a row, a queue preserves it. That is the whole difference between the two, and it is not a small one: choosing a stack or a queue decides whether your data comes back forwards or backwards. And, as you are about to see, it can even decide which algorithm you are running.
+Now meet the stack's complete opposite — and you've stood inside it a hundred times. A queue.
+
+At the ice-cream van, who gets served first? Whoever got there first. You join at the back, you wait your turn, you leave from the front. First in, first out. Fair.
+
+Watch what that does. Feed things into a queue, take them out again — and this time the order is kept, perfectly. No flipping. Where a stack *reverses*, a queue *remembers*.
+
+Same simple shape — add at one end, take from the other — but a completely different soul.
+
+And here's the thing I really want you to hold on to, because it's about to matter enormously. The *only* difference between a stack and a queue is which end you take from. The front, or the back. One tiny choice.
+
+Remember that. Because in just a moment, that single choice is going to decide which famous algorithm you're running — and you won't quite believe how much rides on it.
 
 ---
 
 ## Breadth-First  ·  `l3m3.mp3`
-*Concept: a queue spreads the search ring by ring*
+*Hook: ripples on a pond*
 
-Time to put your queue to work on something real. Here is a graph — rooms joined by corridors — and your job is to light up every room, starting from one. Keep a list of rooms waiting to be visited; that list is called the frontier. The rule is the same each time: take a room from the frontier, light it, then add its new neighbours to the back of the list. The question is which room you take next — and here you take the one that has been waiting longest, the one at the front. That makes the search spread outward evenly, like ripples on a pond: first the rooms next to the start, then the rooms one step further, then further still. This is breadth-first search, and it is exactly the flood you met back in Lesson One, when you found the shortest path. Because it always reaches the near rooms before the far ones, it is the method that finds shortest routes. A queue at the heart of it, spreading ring by ring.
+Drop a stone into a still pond. Watch the ripples. They touch the nearest water first, then a little further out, then further still — a perfect, spreading circle.
+
+That's this whole lesson. You've got a map of rooms joined by corridors, and you want to light up every one, starting from where you're standing. Keep a little waiting-list of rooms to visit — and always take the one that has been waiting *longest*. The oldest first.
+
+And what you get is exactly those ripples. The rooms right beside you, then the rooms one step beyond, then two — spreading outward, evenly, never racing ahead of itself.
+
+You've met this before; you just didn't know its name. It's the flood from Lesson One — the one that found the shortest path. And it is no toy. This is what happens, right now, when your maps app finds your quickest way home: it floods out from you, ring by ring, until it reaches where you're going.
+
+The nearest reached first. That's *why* it always finds the shortest way. A stone in a pond, doing real work.
 
 ---
 
 ## Depth-First  ·  `l3m4.mp3`
-*Concept: swap the queue for a stack and the algorithm changes*
+*Hook: one tiny change, a whole new algorithm*
 
-Same graph, same rule — take a room, light it, add its neighbours — but change one thing, and you change the whole algorithm. This time, when you choose which room to visit next, take the newest one you added, not the oldest. Take from the top, like a stack. Watch what happens: instead of spreading out evenly, the search plunges straight down one corridor, as deep as it can go, only backing up when it hits a dead end. That is depth-first search. The astonishing part is how little you changed. Breadth-first and depth-first explore the very same rooms; the only difference is whether your frontier behaves like a queue or a stack — whether you take the oldest waiting room or the newest. Swap that one choice, and a gentle ripple becomes a deep dive. The structure you pick is the algorithm you get. Sit with that idea — it is one of the most elegant in all of computing.
+Same map. Same rule — light a room, then add its neighbours to your list. But change one single thing, and something extraordinary happens.
+
+This time, when you choose which room to visit next, take the *newest* one you found. Not the oldest. The newest.
+
+And suddenly you're not spreading out at all. You're an explorer who picks one tunnel and follows it down, and down, as far as it will go — only ever turning back when you hit a dead end. Then you try the next. Think of Theseus deep in the labyrinth, unspooling his thread, pressing on into the dark.
+
+Now here is the part to sit very still for. To turn that gentle, spreading ripple into this headlong dive... you changed almost nothing. You didn't rewrite the rule. You just took from the *other end* of your list.
+
+Oldest, and it ripples outward. Newest, and it dives down. The structure you reach for *is* the algorithm you become.
+
+That quiet, enormous idea is one of the most beautiful things you will ever meet in all of computing. Let it land.
 
 ---
 
 ## Challenge  ·  `l3m5.mp3`
-*Concept: choose the structure; deduce the algorithm from the order*
+*Hook: read the trail like a detective*
 
-No demonstrations, and no labels — just you and the problem. First, you will be handed both a stack and a queue, and a target. You have to decide for yourself: do you want the row reversed, or kept in order? Reversed means last in, first out — that is the stack, so pop from the back. Same order means first in, first out — that is the queue, so take from the front. Choose wrongly, and the output will not match. Then comes the harder one. You are shown a graph and the exact order its rooms must be visited in — but nobody tells you whether that is breadth-first or depth-first. You have to read it. Does it fan out to the nearest rooms first, or dive down one path before coming back? Spot the pattern, name the algorithm in your head, and pick the block that produces it — take from the front, or take from the top. This is the whole point of everything you have learned: not just knowing how each tool works, but recognising, from the shape of a problem, which tool it is asking for.
+Last one. And this time, you're the detective.
+
+First I'll give you both tools — the stack and the queue — and a result I'm after. Reversed, or kept in order? You already know in your bones which is which. Choose wrong, and it won't match. So choose well.
+
+Then comes the real puzzle. I'll show you a graph, and the exact order its rooms were visited in — but I will *not* tell you how it was done. You have to read the trail yourself. Did it fan out, gently, nearest-first? Or did it plunge down one path and disappear into the deep?
+
+Spot it. Name it, quietly, in your own head. Then pick the block that would have left those footprints.
+
+This is everything you've learned, folded into a single moment. Not reciting how a tool works — *recognising*, from the shape of a problem, which tool was here.
+
+That's not following anymore. That's understanding. And understanding is the one thing nobody can ever take away from you.
 
 ---
 
 ### Production notes
-- One voice throughout; calm, friendly, slightly-slow delivery suits the dyslexia-friendly design.
-- Pause clearly at full stops — listeners are watching the screen at the same time.
-- Export MP3 (mono is fine), name by the table above (`l2m1` … `l2m6`, then `l3m1` … `l3m5`), put them in `dojo-audio/` beside the app, commit, done.
-- ElevenLabs: pick one voice, high stability (~0.6–0.75), and keep it identical across every clip — including the Lesson One set — for consistency.
+- One warm, unhurried voice throughout — a storyteller, not a narrator. The same voice across all of Lessons One to Three.
+- Leave a real beat of silence after the big reveals and before each final line. Those pauses are where the thinking happens.
+- Short sentences are deliberate — they're kinder to listeners who are also watching the screen, and to dyslexic and neurodivergent learners especially. Don't smooth them into long ones.
+- Export MP3 (mono is fine), name by the table above (`l2m1` … `l2m6`, then `l3m1` … `l3m5`), drop in `dojo-audio/` beside the app.
+- ElevenLabs: one voice, high stability (~0.6–0.75), kept identical across every clip. A slightly slower rate suits these.

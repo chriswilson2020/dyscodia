@@ -204,10 +204,10 @@ export const L16_TEST: LevelDef[] = [
 ];
 
 export const ARRAY_LESSONS: LessonMeta[] = [
-  { id: 'l7', tab: '🔢 Bubble Sort', belt: { name: 'Sorter Belt', badge: '🔢' }, audio: 'bubble-sort', learn: L7_LEARN, test: L7_TEST },
-  { id: 'l9', tab: '🔖 Selection Sort', belt: { name: 'Selector Belt', badge: '🔖' }, audio: 'selection-sort', learn: L9_LEARN, test: L9_TEST },
-  { id: 'l10', tab: '📥 Insertion Sort', belt: { name: 'Inserter Belt', badge: '📥' }, audio: 'insertion-sort', learn: L10_LEARN, test: L10_TEST },
-  { id: 'l8', tab: '🔎 Search', belt: { name: 'Finder Belt', badge: '🔎' }, audio: 'search', learn: L8_LEARN, test: L8_TEST },
-  { id: 'l11', tab: '🏁 The Race', belt: { name: 'Strategist Belt', badge: '🏁' }, audio: 'race', learn: L11_LEARN, test: L11_TEST },
-  { id: 'l16', tab: '🧠 Challenge', belt: { name: 'Tactician Belt', badge: '🧠' }, audio: 'challenge-sorting', learn: L16_LEARN, test: L16_TEST },
+  { id: 'l7', tab: '🔢 Bubble Sort', belt: { name: 'Sorter Belt', badge: '🔢' }, learn: L7_LEARN, test: L7_TEST },
+  { id: 'l9', tab: '🔖 Selection Sort', belt: { name: 'Selector Belt', badge: '🔖' }, learn: L9_LEARN, test: L9_TEST },
+  { id: 'l10', tab: '📥 Insertion Sort', belt: { name: 'Inserter Belt', badge: '📥' }, learn: L10_LEARN, test: L10_TEST },
+  { id: 'l8', tab: '🔎 Search', belt: { name: 'Finder Belt', badge: '🔎' }, learn: L8_LEARN, test: L8_TEST },
+  { id: 'l11', tab: '🏁 The Race', belt: { name: 'Strategist Belt', badge: '🏁' }, learn: L11_LEARN, test: L11_TEST },
+  { id: 'l16', tab: '🧠 Challenge', belt: { name: 'Tactician Belt', badge: '🧠' }, learn: L16_LEARN, test: L16_TEST },
 ];

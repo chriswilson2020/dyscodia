@@ -699,8 +699,19 @@ function refreshAudioBar() {
   $('audioBar').classList.toggle('audio-off', !audioReady);
   $('audioLabel').textContent = audioReady ? '🎧 Lesson' : '🎧 add ' + audioName(curLesson) + '.mp3';
 }
-/** The audio filename for a module — a readable slug, falling back to the id. */
-function audioName(lessonId) { const m = metaOf(lessonId); return (m && m.audio) || lessonId; }
+/**
+ * Audio filename for a module, codified by position: l<lesson><module>, e.g.
+ * Lesson Two's third module (Insertion Sort) → 'l2m3'. Derived from the lesson
+ * order, so it stays sequential and self-documenting with no per-module config.
+ */
+function audioName(lessonId) {
+  const courses = COURSES();
+  for (let ci = 0; ci < courses.length; ci++) {
+    const mi = courses[ci].modules.findIndex((m) => m.id === lessonId);
+    if (mi >= 0) return 'l' + (ci + 1) + 'm' + (mi + 1);
+  }
+  return lessonId;
+}
 function setupAudioFor(lessonId) {
   const name = audioName(lessonId);
   if (lessonAudio.getAttribute('data-lesson') === name) return;

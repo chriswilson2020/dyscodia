@@ -1,7 +1,7 @@
 # Code Dojo — Lesson Audio Scripts
 
 One warm, consistent voice. Read slightly slow, with clear pauses at the full stops.
-Export each as a plain MP3 named **moves.mp3 … best-way.mp3** and drop them in a **`dojo-audio/`**
+Export each as a plain MP3 named **l1m1.mp3 … l1m6.mp3** and drop them in a **`dojo-audio/`**
 folder sitting next to `index.html`. The player loads them automatically — nothing else to do.
 
 (Optional Black Belt clip at the end — see note.)
@@ -61,5 +61,5 @@ This is your black belt grading. There is no new idea to learn here — and that
 ### Production notes
 - One voice throughout; a calm, friendly, slightly-slow delivery suits the dyslexia-friendly design.
 - Pause clearly at full stops and between the numbered ideas — listeners are watching the screen at the same time.
-- Export MP3 (mono is fine), name `moves.mp3` … `best-way.mp3`, put them in `dojo-audio/` beside `index.html`, commit, done.
+- Export MP3 (mono is fine), name `l1m1.mp3` … `l1m6.mp3`, put them in `dojo-audio/` beside `index.html`, commit, done.
 - ElevenLabs: pick one voice, high stability (~0.6–0.75), and keep it identical across all six for consistency.

@@ -118,8 +118,6 @@ export interface LessonMeta {
   id: string;
   tab: string;
   belt: { name: string; badge: string };
-  /** Filename slug for this module's lesson audio (e.g. 'bubble-sort' → dojo-audio/bubble-sort.mp3). */
-  audio?: string;
   learn?: LevelDef[];
   test: LevelDef[];
 }
